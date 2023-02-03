@@ -11,5 +11,5 @@ jobs:
     
     - name: Build the Docker image for test
       run: | 
-          docker build ./client --file ./client/Dockerfile.dev --tag lokendrachhetri9/react-test:$(date +%s)
-          docker run lokendrachhetri9/react-test:$(date +%s) npm test
+          docker build ./client --file ./client/Dockerfile.dev --tag lokendrachhetri9/react-test:$(date)
+          docker run lokendrachhetri9/react-test:$(date) npm test
