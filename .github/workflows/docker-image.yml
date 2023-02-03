@@ -10,6 +10,7 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: Build the Docker image for test
-      run: | 
-          docker build ./client --file ./client/Dockerfile.dev --tag lokendrachhetri9/react-test
-          docker run lokendrachhetri9/react-test npm test -- --coverage
+      run: docker build ./client --file ./client/Dockerfile.dev --tag lokendrachhetri9/react-test
+    
+    - name: Run the tests
+      run: docker run lokendrachhetri9/react-test npm test -- --coverage
