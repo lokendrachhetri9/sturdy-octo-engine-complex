@@ -13,4 +13,14 @@ jobs:
       run: docker build ./client --file ./client/Dockerfile.dev --tag lokendrachhetri9/react-test
     
     - name: Run the tests
-      run: docker run lokendrachhetri9/react-test npm test -- --coverage
+      run: docker run -e CI=true lokendrachhetri9/react-test npm test -- --coverage
+
+    - name: Building all images
+      run: |
+          docker build -t lokendrachhetri9/multi-client ./client
+          docker build -t lokendrachhetri9/multi-nginx ./nginx
+          docker build -t lokendrachhetri9/multi-server ./server
+          docker build -t lokendrachhetri9/multi-worker ./worker
+
+    - name: Push code to the Dockerhub
+      run: echo 'Doing'
